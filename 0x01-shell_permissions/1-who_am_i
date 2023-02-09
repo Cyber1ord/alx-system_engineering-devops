@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "The username is:" $whoami
+sudo whoami
