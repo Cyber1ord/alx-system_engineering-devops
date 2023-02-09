@@ -1,0 +1,4 @@
+#!/bin/bash
+permission=$(stat -c %a hello)
+new_permission=$((permission | 111))
+ichmod $new_permission hello
