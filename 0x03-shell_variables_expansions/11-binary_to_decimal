@@ -1,2 +1,2 @@
 #!/bin/bash
-result=0 | counter=0 | for (( i=${#BINARY}-1; i>=0; i-- )) | do | if [ "${BINARY:$i:1}" == "1" ]; then result=$(echo "scale=0; $result + 2^$counter" | bc) fi counter=$(($counter + 1)) done
+echo $((2#$BINARY))
