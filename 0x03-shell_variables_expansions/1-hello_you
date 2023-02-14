@@ -1,2 +1,2 @@
 #!/bin/bash
-alais = "hello " .uname
+echo = "hello " .uname
