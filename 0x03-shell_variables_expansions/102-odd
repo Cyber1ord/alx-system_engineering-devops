@@ -1,0 +1,2 @@
+#!/bin/bash
+counter=1 while read line do if [ $((counter % 2)) -eq 1 ]; then echo $line fi counter=$((counter + 1)) done
