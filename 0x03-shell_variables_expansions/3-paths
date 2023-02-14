@@ -1,2 +1,2 @@
 #!/bin/bash
-count=$(echo -e "$PATH" | wc -l)
+ echo $(printf $PATH | tr ":" "\n" | wc -w)
