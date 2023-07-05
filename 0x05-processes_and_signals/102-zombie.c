@@ -2,34 +2,39 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-/**
- * infinite_while - sleeps forever
- * Return: 1
- */
-int infinite_while(void)
-{
-	while (1)
-	{
-		sleep(1);
-	}
-	return (0);
-}
+
 /**
  * main - creates 5 zombies
- * Return: always 1
+ * Return: always 0
  */
 int main(void)
 {
-	int i;
+    int i;
 
-	for (i = 0; i < 5; i++)
-	{
-		if (fork() == 0)
-		{
-			printf("Zombie process created, PID: %d\n", getpid());
-			exit(0);
-		}
-	}
-	infinite_while();
-	return (0);
+    for (i = 0; i < 5; i++)
+    {
+        pid_t pid = fork();
+        if (pid == 0)
+        {
+            printf("Zombie process created, PID: %d\n", getpid());
+            while (1)
+            {
+                sleep(1);
+            }
+            exit(0);
+        }
+        else if (pid < 0)
+        {
+            printf("Fork failed\n");
+            exit(1);
+        }
+    }
+
+    while (1)
+    {
+        sleep(1);
+    }
+
+    return 0;
 }
+
